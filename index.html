@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super Mario — Hanz</title>
+
+  <!-- External CSS and Fonts -->
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@300;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ================== INTRO SCREEN ================== -->
+  <!-- This overlay appears first and disappears when clicked -->
+  <div id="introOverlay" class="intro" role="dialog" aria-label="Press Start">
+    <div class="intro-scene" tabindex="0">
+      <img src="assets/hill1.png" class="intro-hill" alt="">
+      <img src="assets/cloud1.png" class="intro-cloud" alt="">
+      <img id="introMario" src="assets/mario-sprite-stand.png" alt="Mario" class="intro-mario">
+      <div class="press-start">PRESS START TO BEGIN</div>
+    </div>
+  </div>
+
+  <!-- CRT Overlay effect for retro display -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+
+  <!-- HUD (Hidden until game starts) -->
+  <div class="hud" style="display:none;">
+    <div class="hud-right">
+      <div class="hud-coins">COINS <span id="coinCount">0</span></div>
+      <button id="musicToggle" class="hud-btn" aria-pressed="false">Music: OFF</button>
+    </div>
+  </div>
+
+  <!-- ================== BACKGROUND ================== -->
+  <div class="sky" aria-hidden="true">
+    <img src="assets/cloud1.png" class="cloud c1" alt="">
+    <img src="assets/cloud2.png" class="cloud c2" alt="">
+    <img src="assets/cloud1.png" class="cloud c3" alt="">
+  </div>
+
+  <div class="hills" aria-hidden="true">
+    <img src="assets/hill1.png" class="hill h1" alt="">
+    <img src="assets/hill2.png" class="hill h2" alt="">
+  </div>
+
+  <!-- Floating Question Block + Back Button -->
+  <button id="questionBlock" class="block-icon" title="Hit me!" aria-label="Question Block">
+    <img src="assets/block-icon.png" alt="? block">
+  </button>
+  <button id="floatingBack" class="floating-back hidden" aria-hidden="true">⬅ BACK</button>
+
+  <!-- ================== MAIN CONTENT ================== -->
+  <div class="container" id="siteContent" aria-hidden="true">
+    
+    <!-- Header and Logo -->
+    <header>
+      <div class="logo">
+        <img src="assets/mario-icon.png" alt="Mario Icon" class="logo-icon" />
+        <div>
+          <div style="font-size:12px;color:#fff">HANZ EDWARD ALCANTARA</div>
+          <div style="font-size:10px;color:#fff8;">Fullstack Tinkerer</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== MAIN HERO SECTION ========== -->
+    <main class="hero" id="mainHero">
+
+      <!-- ===== LEFT COLUMN: About + Interests ===== -->
+      <div class="left-column">
+
+        <!-- About Section -->
+        <div class="card about" id="about">
+          <h1 id="title">Hi — I’m <span id="name">HANZ EDWARD ALCANTARA</span></h1>
+          <p id="bio">I treat the web like a pixel world — I build playful interfaces, tiny games, and tools that feel alive. I solve problems one brick at a time and collect ideas like coins.</p>
+          <div class="row">
+            <div class="badge">Age: <span id="age">21</span></div>
+            <div class="badge">Location: <span id="location">Philippines</span></div>
+            <button class="btn" id="downloadBtn">Download vCard</button>
+          </div>
+        </div>
+
+        <!-- Interests Section -->
+        <section id="interests" class="card">
+          <h2 class="section-title">Interests</h2>
+          <div class="grid interests-grid">
+            <div class="interest-card">
+              <div class="interest-title">Coding <span class="pu">• power-up</span></div>
+              <div>Crafting levels of logic with JavaScript, React, and playful experiments.</div>
+            </div>
+            <div class="interest-card">
+              <div class="interest-title">Art & Design <span class="pu">• spritekit</span></div>
+              <div>Pixel art, UI mockups, and color studies — tiny details matter.</div>
+            </div>
+            <div class="interest-card">
+              <div class="interest-title">Music <span class="pu">• chiptune</span></div>
+              <div>Chiptune sketches and SFX that make interfaces feel tactile.</div>
+            </div>
+            <div class="interest-card">
+              <div class="interest-title">Gaming <span class="pu">• exploration</span></div>
+              <div>Platformers, speedruns, and level design experiments.</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===== RIGHT COLUMN: Mario Game + Contact ===== -->
+      <div class="right-column">
+
+        <!-- Mario Play Card -->
+        <div class="card play-area">
+          <div style="text-align:center;">
+            <div class="player-label" style="margin-bottom:8px;">Player</div>
+            <img id="heroSprite" src="assets/mario-sprite-stand.png" class="hero-sprite" alt="Mario Sprite" loading="lazy" draggable="false">
+            <button class="btn" id="playBtn" style="margin-top:12px;">Play</button>
+          </div>
+        </div>
+
+        <!-- Quick Contact Form -->
+        <div class="card" style="margin-top:12px">
+         <h3>Quick Contact</h3>
+         <form id="contactForm" action="https://formspree.io/f/xkgqavrg" method="POST">
+            <input type="email" name="email" id="email" placeholder="you@example.com" required />
+             <textarea name="message" id="message" rows="3" placeholder="Say hi!" required></textarea>
+             <button type="submit" class="btn">Send</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- ========== MY WORLD SECTION ========== -->
+    <section id="projects" class="card">
+      <h2 class="section-title">My World</h2>
+      <div class="grid">
+        <!-- Family Time Card -->
+        <div class="card project">
+          <img class="project-mini" src="assets/block-icon.png" alt="">
+          <div>
+            <strong>Family Time</strong>
+            <p>They’re my reset button. No matter how busy life gets, moments with my family remind me why I keep pushing forward.</p>
+            <button class="btn" id="viewFamilyBtn">View</button>
+          </div>
+        </div>
+
+        <!-- Love & Growth Card -->
+        <div class="card project">
+          <img class="project-mini" src="assets/block-icon.png" alt="">
+          <div>
+            <strong>Love & Growth</strong>
+            <p>Being with someone who supports your dreams makes every challenge easier — it’s where I find peace, strength, and inspiration.</p>
+           <button class="btn" id="viewLoveBtn">View</button>
+          </div>
+        </div>
+
+        <!-- Life Beyond School Card -->
+        <div class="card project">
+          <img class="project-mini" src="assets/block-icon.png" alt="">
+          <div>
+            <strong>Life Beyond School</strong>
+            <p>Whether it’s simple hangouts, late-night talks, or chasing sunsets, I believe the best lessons happen outside the classroom.</p>
+           <button class="btn" id="viewLifeBtn">View</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GALLERY SECTION ========== -->
+    <section id="gallery" class="card">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery">
+        <!-- Photo Thumbnails -->
+        <img src="assets/gallery1.jpg" alt="Gallery 1" loading="lazy">
+        <img src="assets/gallery2.jpg" alt="Gallery 2" loading="lazy">
+        <img src="assets/gallery3.jpg" alt="Gallery 3" loading="lazy">
+        <img src="assets/gallery4.jpg" alt="Gallery 4" loading="lazy">
+        <img src="assets/gallery5.jpg" alt="Gallery 5" loading="lazy">
+
+        <!-- Video Thumbnails -->
+        <video class="gallery-video" preload="metadata"><source src="assets/gallery6.mp4" type="video/mp4"></video>
+        <video class="gallery-video" preload="metadata"><source src="assets/gallery7.mp4" type="video/mp4"></video>
+        <video class="gallery-video" preload="metadata"><source src="assets/gallery8.mp4" type="video/mp4"></video>
+        <video class="gallery-video" preload="metadata"><source src="assets/gallery9.mp4" type="video/mp4"></video>
+        <video class="gallery-video" preload="metadata"><source src="assets/gallery10.mp4" type="video/mp4"></video>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT / SOCIAL MEDIA SECTION ========== -->
+    <section id="contact" class="card">
+      <h2 class="section-title">SOCIAL MEDIA</h2>
+      <div class="social-links">
+        <a href="https://www.facebook.com/hnzdwrd" target="_blank" class="social-icon" title="Facebook">
+          <img src="assets/fb.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/hnzlcntr/" target="_blank" class="social-icon" title="Instagram">
+          <img src="assets/ig.png" alt="Instagram">
+        </a>
+        <a href="https://www.tiktok.com/@hnzlcntr" target="_blank" class="social-icon" title="TikTok">
+          <img src="assets/tiktok.png" alt="TikTok">
+        </a>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER AND GROUND ELEMENTS ========== -->
+    <div class="ground">
+      <img id="pipe" src="assets/pipe.png" class="pipe" alt="pipe" title="Warp to contact">
+      <img src="assets/brick-row.png" class="bricks" alt="">
+    </div>
+
+    <footer>
+      <div>© <span id="footerName">HANZ EDWARD ALCANTARA</span></div>
+      <div class="footer-text">Level 1 • 3 lives remaining</div>
+    </footer>
+  </div>
+
+  <!-- ========== INITIAL SCRIPT ========== -->
+  <!-- This removes the intro if page is reloaded after playing -->
+  <script>
+    if (window.location.hash === '#mainHero') {
+      window.addEventListener('DOMContentLoaded', () => {
+        const intro = document.getElementById('introOverlay');
+        const content = document.getElementById('siteContent');
+        if (intro && content) {
+          intro.style.display = 'none';
+          content.removeAttribute('aria-hidden');
+        }
+        sessionStorage.setItem('cameFromGame', 'true');
+      });
+    }
+  </script>
+
+  <!-- External JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
